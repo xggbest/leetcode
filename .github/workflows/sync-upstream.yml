@@ -1,0 +1,74 @@
+name: Sync fork with upstream
+
+on:
+  # 定时自动执行
+  schedule:
+    # 每天北京时间 10:17 执行一次
+    # 不建议写成 0 分钟，因为 GitHub Actions 在整点附近负载更高，可能延迟
+    - cron: "17 10 * * *"
+      timezone: "Asia/Shanghai"
+
+  # 允许你在 GitHub 页面手动点 Run workflow 立即同步
+  workflow_dispatch:
+
+# 允许 GITHUB_TOKEN 向当前 fork 仓库写入内容
+# 如果没有这个权限，后面的同步分支 / 推送 tag 可能会报 Permission denied
+permissions:
+  contents: write
+
+# 防止多个同步任务同时运行，避免互相推送冲突
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    # 固定使用 Ubuntu 24.04，避免 ubuntu-latest 以后自动切到新版系统导致行为变化
+    # 如果以后想跟随 GitHub 最新环境，也可以改回 ubuntu-latest
+    runs-on: ubuntu-24.04
+
+    steps:
+      # 第一步：把当前 fork 仓库检出到 Actions 运行环境
+      # 后面同步 tag 需要本地 git 仓库，所以这里需要 checkout
+      - name: Checkout fork repository
+        uses: actions/checkout@v5
+        with:
+          # 拉取完整提交历史，方便处理 tag
+          fetch-depth: 0
+          # 使用当前 workflow 自带的 GITHUB_TOKEN
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 第二步：同步 fork 的主分支到上游仓库
+      # gh repo sync 会自动识别当前仓库的上游 parent 仓库
+      # 这里的 -b main 表示同步 main 分支
+      # 如果你的默认分支是 master，就把 main 改成 master
+      - name: Sync branch from upstream
+        run: |
+          gh repo sync ${{ github.repository }} -b main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 第三步：同步上游仓库的 tag
+      # 注意：上面的 gh repo sync 主要同步的是分支，不会自动同步 tag
+      # 如果你需要 fork 里也有 release 对应的 git tag，就需要下面这一步
+      - name: Sync tags from upstream
+        run: |
+          # 读取当前 fork 对应的上游仓库 full_name，例如 octocat/Hello-World
+          UPSTREAM_REPO=$(gh api repos/${{ github.repository }} --jq '.parent.full_name')
+
+          # 如果当前仓库不是 fork，.parent 会不存在；这里直接报错，避免误操作
+          if [ -z "$UPSTREAM_REPO" ]; then
+            echo "当前仓库不是 fork，无法找到上游仓库"
+            exit 1
+          fi
+
+          # 添加 upstream 远程地址
+          git remote add upstream "https://github.com/${UPSTREAM_REPO}.git"
+
+          # 从上游仓库拉取所有 tag
+          git fetch upstream --tags
+
+          # 把本地拿到的 tag 推送到你的 fork
+          git push origin --tags
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
