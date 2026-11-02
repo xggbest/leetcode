@@ -50,7 +50,7 @@ death = {1948, 1951, 2000}
 
 > **Thinking**
 >
-> Years lie in $1900$– $2000$; find the earliest year with the most people alive. Scanning everyone for each year is $O(nC)$.
+> Years lie in $1900$– $2000$; find the earliest year with the most people alive. Scanning everyone for each year is $O(n \times C)$.
 >
 > A life is a range increment. A difference array updates endpoints in $O(1)$ and prefix sums recover the yearly counts.
 >
@@ -64,7 +64,7 @@ Since the year range in the problem is fixed, we can use an array of length $102
 
 We traverse the birth and death years of each person, and add one and subtract one from the corresponding year's population change, respectively. Then we traverse the difference array, and find the maximum value of the prefix sum of the difference array. The year corresponding to the maximum value is the answer.
 
-The time complexity is $O(n)$, and the space complexity is $O(C)$. Here, $n$ is the length of the birth and death years, and $C$ is the range of years.
+The time complexity is $O(n)$, and the space complexity is $O(C)$, where $n$ is the length of the birth and death years, and $C$ is the range of years.
 
 <!-- tabs:start -->
 

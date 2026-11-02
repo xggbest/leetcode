@@ -52,7 +52,7 @@ comments: true
 >
 > Doubling the fraction yields the next bit; the leftover fraction is doubled again. If $32$ bits are not enough to reach $0$, it cannot be represented.
 >
-> Start from `0.`, loop `num *= 2`, append the integer part and subtract it. A leftover $num$ becomes `ERROR`.
+> Start from `0.`, loop `num *= 2`, append the integer part and subtract it. A leftover $\textit{num}$ becomes `ERROR`.
 
 <!-- thinking:end -->
 
@@ -75,7 +75,7 @@ For this problem, since the real number is between $0$ and $1$, its integer part
 
 Finally, if the decimal part is not $0$, it means that the real number cannot be represented in binary within $32$ bits, return the string `"ERROR"`. Otherwise, return the converted binary fraction.
 
-The time complexity is $O(C)$, and the space complexity is $O(C)$. Here, $C$ is the length of the binary fraction, with a maximum of $32$.
+The time complexity is $O(C)$, and the space complexity is $O(C)$, where $C$ is the length of the binary fraction, with a maximum of $32$.
 
 <!-- tabs:start -->
 

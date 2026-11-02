@@ -57,7 +57,7 @@ difficulty: Medium
 >
 > Any feasible path is enough, so DFS tries down then right and backtracks on failure.
 >
-> On entry the cell is appended and marked as an obstacle to block re-entry; success keeps the path, failure pops. In-place marks replace a separate $vis$.
+> On entry the cell is appended and marked as an obstacle to block re-entry; success keeps the path, failure pops. In-place marks replace a separate $\textit{vis}$.
 
 <!-- thinking:end -->
 
@@ -65,7 +65,7 @@ We can use depth-first search to solve this problem. We start from the top left 
 
 If we can finally reach the bottom right corner, then we have found a feasible path, otherwise, it means there is no feasible path.
 
-The time complexity is $O(m \times n)$, and the space complexity is $O(m \times n)$. Here, $m$ and $n$ are the number of rows and columns of the grid, respectively.
+The time complexity is $O(mn)$, and the space complexity is $O(mn)$, where $m$ and $n$ are the number of rows and columns of the grid, respectively.
 
 <!-- tabs:start -->
 

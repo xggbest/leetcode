@@ -349,7 +349,7 @@ struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize) {
 
 > **Thinking**
 >
-> Each max query in method 1 is linear. A segment tree answers range maxima in $O(\log n)$, so the same recursion becomes $O(n\log n)$.
+> Each max query in method 1 is linear. A segment tree answers range maxima in $O(\log n)$, so the same recursion becomes $O(n \log n)$.
 
 <!-- thinking:end -->
 
@@ -860,7 +860,7 @@ func constructMaximumBinaryTree(nums []int) *TreeNode {
 
 <!-- thinking:end -->
 
-Scan the half-open interval $[l, r)$ for the index $i$ of the maximum, and make $nums[i]$ the root. The left child is the interval $[l, i)$ and the right child is $[i + 1, r)$. Pending intervals live on an explicit stack: after a root is created, push the right interval and then the left interval. Empty intervals are skipped. The first interval is $[0, n)$.
+Scan the half-open interval $[l, r)$ for the index $i$ of the maximum, and make $\textit{nums}[i]$ the root. The left child is the interval $[l, i)$ and the right child is $[i + 1, r)$. Pending intervals live on an explicit stack: after a root is created, push the right interval and then the left interval. Empty intervals are skipped. The first interval is $[0, n)$.
 
 The time complexity is $O(n^2)$, and the space complexity is $O(n)$, where $n$ is the length of the array.
 

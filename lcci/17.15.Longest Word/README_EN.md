@@ -50,25 +50,25 @@ difficulty: Medium
 >
 > Sort by decreasing length then increasing lex order; the first concatenable word is the answer.
 >
-> Remove the word itself before the search so it cannot use itself. $dfs$ tries dictionary prefixes. Otherwise return empty.
+> Remove the word itself before the search so it cannot use itself. $\textit{dfs}$ tries dictionary prefixes. Otherwise return empty.
 
 <!-- thinking:end -->
 
 Note that in the problem, each word can actually be reused.
 
-We can use a hash table $\textit{s}$ to store all the words, then sort the words in descending order of length, and if the lengths are the same, sort them in ascending lexicographical order.
+We can use a hash table $s$ to store all the words, then sort the words in descending order of length, and if the lengths are the same, sort them in ascending lexicographical order.
 
-Next, we iterate through the sorted list of words. For each word $\textit{w}$, we first remove it from the hash table $\textit{s}$, then use depth-first search $\textit{dfs}$ to determine if $\textit{w}$ can be composed of other words. If it can, we return $\textit{w}$.
+Next, we iterate through the sorted list of words. For each word $w$, we first remove it from the hash table $s$, then use depth-first search $\textit{dfs}$ to determine if $w$ can be composed of other words. If it can, we return $w$.
 
 The execution logic of the function $\textit{dfs}$ is as follows:
 
-- If $\textit{w}$ is empty, return $\text{true}$;
-- Iterate through all prefixes of $\textit{w}$. If a prefix is in the hash table $\textit{s}$ and $\textit{dfs}$ returns $\text{true}$, then return $\text{true}$;
-- If no prefix meets the condition, return $\text{false}$.
+- If $w$ is empty, return $\textit{true}$;
+- Iterate through all prefixes of $w$. If a prefix is in the hash table $s$ and $\textit{dfs}$ returns $\textit{true}$, then return $\textit{true}$;
+- If no prefix meets the condition, return $\textit{false}$.
 
 If no word meets the condition, return an empty string.
 
-The time complexity is $O(m \times n \times \log n + n \times 2^M)$, and the space complexity is $O(m \times n)$. Here, $n$ and $m$ are the length of the word list and the average length of the words, respectively, and $M$ is the length of the longest word.
+The time complexity is $O(mn \log n + n 2^M)$, and the space complexity is $O(mn)$, where $n$ and $m$ are the length of the word list and the average length of the words, respectively, and $M$ is the length of the longest word.
 
 <!-- tabs:start -->
 

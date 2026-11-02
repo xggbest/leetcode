@@ -98,12 +98,12 @@ tags:
 考虑第 $j$ 天的工作安排，我们可以枚举第 $j$ 天完成的工作 $[k,..i]$，那么有状态转移方程：
 
 $$
-f[i][j] = \min_{k \in [1,i]} \{f[k-1][j-1] + \max_{k \leq t \leq i} \{jobDifficulty[t-1]\}\}
+f[i][j] = \min_{k \in [1,i]} \{f[k-1][j-1] + \max_{k \leq t \leq i} \{\textit{jobDifficulty}[t-1]\}\}
 $$
 
 最终答案即为 $f[n][d]$。
 
-时间复杂度 $O(n^2 \times d)$，空间复杂度 $O(n \times d)$。其中 $n$ 和 $d$ 分别为工作数量和需要计划的天数。
+时间复杂度 $O(n^2d)$，空间复杂度 $O(nd)$。其中 $n$ 和 $d$ 分别为工作数量和需要计划的天数。
 
 <!-- tabs:start -->
 

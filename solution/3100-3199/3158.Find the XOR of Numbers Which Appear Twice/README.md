@@ -187,11 +187,11 @@ function duplicateNumbersXOR(nums: number[]): number {
 
 > **思考**
 >
-> 方法一使用哈希表，在 $1\le nums[i]\le 50$ 时空间可再压到常数。
+> 方法一使用哈希表，在 $1\le \textit{nums}[i]\le 50$ 时空间可再压到常数。
 >
 > 一个 $64$ 位掩码足以标记每个值是否出现过；第二次见到便异或进答案。
 >
-> 遍历时若 $mask$ 第 $x$ 位已立则 $ans\oplus=x$，否则置位。无需额外数组。
+> 遍历时若 $\textit{mask}$ 第 $x$ 位已立则 $\textit{ans}\oplus=x$，否则置位。无需额外数组。
 
 <!-- thinking:end -->
 
@@ -203,7 +203,7 @@ function duplicateNumbersXOR(nums: number[]): number {
 
 最后返回答案即可。
 
-时间复杂度 $O(n)$，其中 $n$ 是数组 $\textit{nums}$ 的长度。空间复杂度 $O(1)$。
+时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 是数组 $\textit{nums}$ 的长度。
 
 <!-- tabs:start -->
 

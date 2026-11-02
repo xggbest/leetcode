@@ -71,7 +71,7 @@ comments: true
 >
 > 每个数前加正号或负号，使结果等于 $\textit{target}$。 $n\le 20$ 时可爆搜，但题目允许用计数 DP。
 >
-> 前 $i$ 个数能形成的和落在 $[-1000,1000]$，用偏移 $1000$ 把下标变为非负。 $dp[i][j]$ 由加上或减去 $nums[i]$ 从上一行累加而来。
+> 前 $i$ 个数能形成的和落在 $[-1000,1000]$，用偏移 $1000$ 把下标变为非负。 $dp[i][j]$ 由加上或减去 $\textit{nums}[i]$ 从上一行累加而来。
 
 <!-- thinking:end -->
 
@@ -217,7 +217,7 @@ class Solution {
 
 > **思考**
 >
-> 方法一把和的正负都展开。设负号子集的和为 $neg$，则 $s-2\cdot neg=\textit{target}$，化为选出和为 $(s-\textit{target})/2$ 的子集个数，即二维 $01$ 背包计数。
+> 方法一把和的正负都展开。设负号子集的和为 $\textit{neg}$，则 $s-2\cdot \textit{neg}=\textit{target}$，化为选出和为 $(s-\textit{target})/2$ 的子集个数，即二维 $01$ 背包计数。
 
 <!-- thinking:end -->
 

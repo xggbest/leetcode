@@ -47,7 +47,7 @@ difficulty: Easy
 >
 > That is the longest window containing at most one $0$, which a sliding window finds in one pass.
 >
-> Right end $i$ walks $32$ bits; $cnt$ is the number of zeros. When $cnt>1$, advance $j$. `num>>i & 1 ^ 1` increments exactly on a zero bit.
+> Right end $i$ walks $32$ bits; $\textit{cnt}$ is the number of zeros. When $\textit{cnt}>1$, advance $j$. `num>>i & 1 ^ 1` increments exactly on a zero bit.
 
 <!-- thinking:end -->
 
@@ -55,7 +55,7 @@ We can use two pointers $i$ and $j$ to maintain a sliding window, where $i$ is t
 
 Finally, return the maximum length.
 
-The time complexity is $O(\log M)$, and the space complexity is $O(1)$. Here, $M$ is the maximum value of a 32-bit integer.
+The time complexity is $O(\log M)$, and the space complexity is $O(1)$, where $M$ is the maximum value of a 32-bit integer.
 
 <!-- tabs:start -->
 

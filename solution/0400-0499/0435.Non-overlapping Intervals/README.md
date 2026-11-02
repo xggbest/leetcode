@@ -78,7 +78,7 @@ tags:
 
 <!-- thinking:end -->
 
-我们首先将区间按照右边界升序排序，用一个变量 $\textit{pre}$ 记录上一个区间的右边界，用一个变量 $\textit{ans}$ 记录需要移除的区间数量，初始时 $\textit{ans} = \textit{intervals.length}$。
+我们首先将区间按照右边界升序排序，用一个变量 $\textit{pre}$ 记录上一个区间的右边界，用一个变量 $\textit{ans}$ 记录需要移除的区间数量，初始时 $\textit{ans} = \textit{intervals}.\textit{length}$。
 
 然后遍历区间，对于每一个区间：
 
@@ -87,7 +87,7 @@ tags:
 
 最后返回 $\textit{ans}$ 即可。
 
-时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 为区间的数量。
+时间复杂度 $O(n \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 为区间的数量。
 
 <!-- tabs:start -->
 

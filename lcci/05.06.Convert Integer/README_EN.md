@@ -69,13 +69,13 @@ difficulty: Easy
 >
 > Those bits are exactly the ones in $A\oplus B$, so the answer is the Hamming weight of the XOR.
 >
-> Mask both with $0xFFFFFFFF$ so negative values share a $32$-bit unsigned view, then `bit_count`.
+> Mask both with `0xFFFFFFFF` so negative values share a $32$-bit unsigned view, then `bit_count`.
 
 <!-- thinking:end -->
 
 We perform a bitwise XOR operation on A and B. The number of $1$s in the result is the number of bits that need to be changed.
 
-The time complexity is $O(\log n)$, where $n$ is the maximum value of A and B. The space complexity is $O(1)$.
+The time complexity is $O(\log n)$, and the space complexity is $O(1)$, where $n$ is the maximum value of A and B.
 
 <!-- tabs:start -->
 

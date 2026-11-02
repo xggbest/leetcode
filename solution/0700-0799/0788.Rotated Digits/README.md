@@ -67,7 +67,7 @@ tags:
 
 然后遍历数字 $x$ 的每一位数字 $v$，如果 $v$ 不是有效数字，说明 $x$ 不是好数，直接返回 $\textit{false}$。否则，我们将数字 $v$ 对应的旋转数字 $d[v]$ 加入到 $y$ 中。最后，判断 $x$ 和 $y$ 是否相等，若不相等，则说明 $x$ 是好数，返回 $\textit{true}$。
 
-时间复杂度 $O(n \times \log n)$，其中 $n$ 为题目给定的数字。空间复杂度 $O(1)$。
+时间复杂度 $O(n \log n)$，空间复杂度 $O(1)$。其中 $n$ 为题目给定的数字。
 
 相似题目：
 
@@ -226,7 +226,7 @@ function rotatedDigits(n: number): number {
 >
 > 方法一对更大的 $n$ 会偏慢。合法性只取决于数位，可用数位 DP 统计 $[1,n]$。
 >
-> $dfs(i,ok,limit)$： $ok$ 表示是否已出现 $2/5/6/9$， $limit$ 为上界约束。非法位不递推，末位返回 $ok$。
+> $\textit{dfs}(i,ok,\textit{limit})$： $ok$ 表示是否已出现 $2/5/6/9$， $\textit{limit}$ 为上界约束。非法位不递推，末位返回 $ok$。
 
 <!-- thinking:end -->
 
@@ -237,7 +237,7 @@ function rotatedDigits(n: number): number {
 对于区间 $[l,..r]$ 问题，我们一般会将其转化为 $[1,..r]$ 然后再减去 $[1,..l - 1]$ 的问题，即：
 
 $$
-ans = \sum_{i=1}^{r} ans_i -  \sum_{i=1}^{l-1} ans_i
+\textit{ans} = \sum_{i=1}^{r} \textit{ans}_i -  \sum_{i=1}^{l-1} \textit{ans}_i
 $$
 
 不过对于本题而言，我们只需要求出区间 $[1,..r]$ 的值即可。
@@ -246,17 +246,17 @@ $$
 
 基本步骤如下：
 
-我们将数字 $n$ 转为字符串 $s$。然后定义函数 $\textit{dfs}(i, \textit{ok}, \textit{limit})$，其中 $i$ 表示数字的位数，数字 $\textit{ok}$ 表示当前数字是否满足题目要求，布尔值 $\textit{limit}$ 表示可填的数字的限制。
+我们将数字 $n$ 转为字符串 $s$。然后定义函数 $\textit{dfs}(i, ok, \textit{limit})$，其中 $i$ 表示数字的位数，数字 $ok$ 表示当前数字是否满足题目要求，布尔值 $\textit{limit}$ 表示可填的数字的限制。
 
 函数的执行逻辑如下：
 
-如果 $i$ 大于等于字符串 $s$ 的长度，返回 $\textit{ok}$；
+如果 $i$ 大于等于字符串 $s$ 的长度，返回 $ok$；
 
 否则，我们获取当前位的数字 $up$，如果 $\textit{limit}$ 为 $\textit{true}$，则 $up$ 为当前位的数字，否则 $up$ 为 $9$；
 
-接下来，我们遍历 $[0,..up]$，如果 $j$ 是有效数字 $[0, 1, 8]$，则递归调用 $\textit{dfs}(i + 1, \textit{ok}, \textit{limit} \land j = \textit{up})$；如果 $j$ 是有效数字 $[2, 5, 6, 9]$，则递归调用 $\textit{dfs}(i + 1, 1, \textit{limit} \land j = \textit{up})$；将所有递归调用的结果累加并返回。
+接下来，我们遍历 $[0,..up]$，如果 $j$ 是有效数字 $[0, 1, 8]$，则递归调用 $\textit{dfs}(i + 1, ok, \textit{limit} \land j = up)$；如果 $j$ 是有效数字 $[2, 5, 6, 9]$，则递归调用 $\textit{dfs}(i + 1, 1, \textit{limit} \land j = up)$；将所有递归调用的结果累加并返回。
 
-时间复杂度 $O(\log n \times D)$，空间复杂度 $O(\log n)$。其中 $D = 10$。
+时间复杂度 $O(D \log n)$，空间复杂度 $O(\log n)$。其中 $D = 10$。
 
 相似题目：
 

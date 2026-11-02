@@ -53,7 +53,7 @@ difficulty: Medium
 >
 > A valid prefix never has more rights than lefts, and neither count exceeds $n$.
 >
-> $dfs(l,r,t)$ prunes when $l<r$ or a count exceeds $n$, and records at $l=r=n$. Trying `'('` then `')'` emits only legal strings.
+> $\textit{dfs}(l,r,t)$ prunes when $l<r$ or a count exceeds $n$, and records at $l=r=n$. Trying `'('` then `')'` emits only legal strings.
 
 <!-- thinking:end -->
 
@@ -66,7 +66,7 @@ We design a function `dfs(l, r, t)`, where $l$ and $r$ represent the number of l
 - We can choose to add a left parenthesis, and recursively execute `dfs(l + 1, r, t + "(")`;
 - We can also choose to add a right parenthesis, and recursively execute `dfs(l, r + 1, t + ")")`.
 
-The time complexity is $O(2^{n\times 2} \times n)$, and the space complexity is $O(n)$.
+The time complexity is $O(n 2^{2n})$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 

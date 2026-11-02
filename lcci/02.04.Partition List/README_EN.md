@@ -41,7 +41,7 @@ difficulty: Medium
 >
 > Only two relative orders matter: the “less” segment and the “rest” segment, so the list can be split and concatenated.
 >
-> Two dummy-headed lists $left$ and $right$ take tail inserts; then $p1.next = right.next$, $p2.next$ is cleared, and $left.next$ is returned. Only pointers change.
+> Two dummy-headed lists $\textit{left}$ and $\textit{right}$ take tail inserts; then $\textit{p1}.\textit{next} = \textit{right}.\textit{next}$, $\textit{p2}.\textit{next}$ is cleared, and $\textit{left}.\textit{next}$ is returned. Only pointers change.
 
 <!-- thinking:end -->
 
@@ -55,7 +55,7 @@ After the traversal, we point the tail node of the `left` list to the first vali
 
 Finally, we return the first valid node of the `left` list.
 
-The time complexity is $O(n)$, where $n$ is the length of the list. The space complexity is $O(1)$.
+The time complexity is $O(n)$, and the space complexity is $O(1)$, where $n$ is the length of the list.
 
 <!-- tabs:start -->
 

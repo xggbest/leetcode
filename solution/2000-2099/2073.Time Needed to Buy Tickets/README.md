@@ -89,7 +89,7 @@ tags:
 
 > **思考**
 >
-> 队列循环购票，直接模拟最坏 $O(\sum tickets)$。观察第 $k$ 人买完时：其前面的人至多买 $tickets[k]$ 张，后面的人至多买 $tickets[k]-1$ 张。
+> 队列循环购票，直接模拟最坏 $O(\sum \textit{tickets})$。观察第 $k$ 人买完时：其前面的人至多买 $\textit{tickets}[k]$ 张，后面的人至多买 $\textit{tickets}[k]-1$ 张。
 >
 > 对每个人取上述上界与自身需求的较小值再求和，一次遍历即可。
 
@@ -99,7 +99,7 @@ tags:
 
 因此，我们可以遍历整个队伍，对于第 $i$ 个人，如果 $i \leq k$，购票时间为 $\min(\textit{tickets}[i], \textit{tickets}[k])$，否则购票时间为 $\min(\textit{tickets}[i], \textit{tickets}[k] - 1)$。我们将所有人的购票时间相加即可。
 
-时间复杂度 $O(n)$，其中 $n$ 为队伍的长度。空间复杂度 $O(1)$。
+时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为队伍的长度。
 
 <!-- tabs:start -->
 

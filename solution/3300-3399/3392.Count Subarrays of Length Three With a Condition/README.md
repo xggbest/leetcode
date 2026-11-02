@@ -70,7 +70,7 @@ tags:
 >
 > 长度为 $3$ 的子数组满足两翼之和的两倍等于中间。 $n \le 100$，枚举中间下标即可。
 >
-> 对每个 $i \in [1,n-2]$ 判断 $(nums[i-1]+nums[i+1])\times 2 = nums[i]$，计数为真的个数。
+> 对每个 $i \in [1,n-2]$ 判断 $(\textit{nums}[i-1]+\textit{nums}[i+1])\times 2 = \textit{nums}[i]$，计数为真的个数。
 
 <!-- thinking:end -->
 
@@ -78,7 +78,7 @@ tags:
 
 遍历结束后，返回答案即可。
 
-时间复杂度 $O(n)$，其中 $n$ 为数组 $\textit{nums}$ 的长度。空间复杂度 $O(1)$。
+时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为数组 $\textit{nums}$ 的长度。
 
 <!-- tabs:start -->
 

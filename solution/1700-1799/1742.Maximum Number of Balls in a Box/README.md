@@ -81,7 +81,7 @@ tags:
 >
 > 盒子编号为各位数字之和。编号不超过 $10^5$，数位和小于 $50$，可开定长计数数组。
 >
-> 枚举 $[\textit{lowLimit},\textit{highLimit}]$，累加数位后 $cnt[y]++$，答案为 $cnt$ 的最大值。
+> 枚举 $[\textit{lowLimit},\textit{highLimit}]$，累加数位后 $\textit{cnt}[y]++$，答案为 $\textit{cnt}$ 的最大值。
 
 <!-- thinking:end -->
 
@@ -89,7 +89,7 @@ tags:
 
 答案就是数组 $\textit{cnt}$ 中的最大值。
 
-时间复杂度 $O(n \times \log_{10}m)$。其中 $n = \textit{highLimit} - \textit{lowLimit} + 1$，而 $m = \textit{highLimit}$。
+时间复杂度 $O(n \log_{10}m)$。其中 $n = \textit{highLimit} - \textit{lowLimit} + 1$，而 $m = \textit{highLimit}$。
 
 <!-- tabs:start -->
 

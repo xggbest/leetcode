@@ -121,21 +121,21 @@ tags:
 >
 > 判定「是否存在长度为 $\textit{mid}$ 且全局只出现一次的子数组」时，枚举所有窗口并用哈希计数即可。滚动哈希把窗口比较降为 $O(1)$ 滑动，整次判定 $O(n)$。
 >
-> 二分 $O(\log n)$ 次判定，总时间 $O(n\log n)$。
+> 二分 $O(\log n)$ 次判定，总时间 $O(n \log n)$。
 
 <!-- thinking:end -->
 
-在 $\textit{mid_len} = \frac{\textit{min_len} + \textit{max_len}}{2}$ 下，对于每个候选子数组长度 $\textit{mid_len}$，
+在 $\textit{mid}_\textit{len} = \frac{\min_\textit{len} + \max_\textit{len}}{2}$ 下，对于每个候选子数组长度 $\textit{mid}_\textit{len}$，
 
-用滚动哈希遍历所有长度为 $\textit{mid_len}$ 的子数组，记录每个哈希值出现的次数。
+用滚动哈希遍历所有长度为 $\textit{mid}_\textit{len}$ 的子数组，记录每个哈希值出现的次数。
 
-若存在某个哈希值恰好出现一次，则说明该长度存在唯一子数组，能因此尝试把 $\textit{max_len}$ 缩小到 $\textit{mid_len} - 1$；
+若存在某个哈希值恰好出现一次，则说明该长度存在唯一子数组，能因此尝试把 $\max_\textit{len}$ 缩小到 $\textit{mid}_\textit{len} - 1$；
 
-否则说明该长度不存在唯一子数组，必须让 $\textit{min_len}$ 上升到 $\textit{mid_len} + 1$。
+否则说明该长度不存在唯一子数组，必须让 $\min_\textit{len}$ 上升到 $\textit{mid}_\textit{len} + 1$。
 
 这是因为一旦长度为 $l$ 的子数组做到了唯一性，长度 $> l$ 的子数组也必然有唯一性。
 
-如此操作的时间复杂度是 $O(n \log n)$，空间复杂度是 $O(n)$，其中 $n$ 为数组长度。
+时间复杂度 $O(n \log n)$，空间复杂度 $O(n)$。其中 $n$ 为数组长度。
 
 原因是做了 $O(\log n)$ 次的二分查找，每次滚动哈希需要 $O(n)$ 的时间。
 

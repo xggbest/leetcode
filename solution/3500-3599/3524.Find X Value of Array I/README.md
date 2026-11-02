@@ -132,7 +132,7 @@ tags:
 >
 > 去掉前缀与后缀后剩下一段子数组，问乘积模 $k$ 等于各余数的子数组个数。 $n \le 10^5$ 而 $k \le 5$，应对余数做 DP 而非枚举子数组。
 >
-> 令 $f[i][r]$ 为以 $i$ 结尾、乘积模 $k$ 为 $r$ 的个数，由 $f[i-1]$ 乘上 $nums[i]$ 转移，并加上只含 $nums[i]$ 的新段。按余数累加即得 $\textit{result}$。
+> 令 $f[i][r]$ 为以 $i$ 结尾、乘积模 $k$ 为 $r$ 的个数，由 $f[i-1]$ 乘上 $\textit{nums}[i]$ 转移，并加上只含 $\textit{nums}[i]$ 的新段。按余数累加即得 $\textit{result}$。
 
 <!-- thinking:end -->
 
@@ -140,7 +140,7 @@ tags:
 
 设 $f[r]$ 表示当前枚举位置上，以该位置结尾、乘积模 $k$ 为 $r$ 的子数组个数。从左到右扫描 $x = \textit{nums}[i]$，用数组 $g$ 承接以 $i$ 结尾的新状态：将每个 $f[r]$ 转移到 $g[(r \times x) \bmod k]$，再把只含 $x$ 的子数组计入 $g[x \bmod k]$。把 $g$ 累加进答案后令 $f \leftarrow g$。
 
-时间复杂度 $O(n \times k)$，空间复杂度 $O(k)$。其中 $n$ 是数组 $\textit{nums}$ 的长度。
+时间复杂度 $O(nk)$，空间复杂度 $O(k)$。其中 $n$ 是数组 $\textit{nums}$ 的长度。
 
 <!-- tabs:start -->
 

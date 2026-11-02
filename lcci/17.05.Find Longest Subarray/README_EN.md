@@ -63,7 +63,7 @@ difficulty: Medium
 >
 > Letters as $+1$ and digits as $-1$ turn the task into the longest zero-sum subarray, i.e. the farthest pair of equal prefix sums.
 >
-> $vis$ stores the first index of each prefix, including $0\mapsto -1$. A repeat of $s$ yields a zero-sum $(j,i]$; keep the first index so the span is longest.
+> $\textit{vis}$ stores the first index of each prefix, including $0\mapsto -1$. A repeat of $s$ yields a zero-sum $(j,i]$; keep the first index so the span is longest.
 
 <!-- thinking:end -->
 
@@ -78,7 +78,7 @@ Next, we iterate through the array, calculating the prefix sum `s` at the curren
 
 After the iteration, we return the subarray with a left endpoint of `k` and a length of `mx`.
 
-The time complexity is $O(n)$, and the space complexity is $O(n)$. Where $n$ is the length of the array.
+The time complexity is $O(n)$, and the space complexity is $O(n)$, where $n$ is the length of the array.
 
 <!-- tabs:start -->
 

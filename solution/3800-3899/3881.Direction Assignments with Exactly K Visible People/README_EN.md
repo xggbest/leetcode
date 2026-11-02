@@ -123,7 +123,7 @@ We enumerate the number of visible people on the left, $a$, so the number of vis
 
 For the binomial coefficient $\binom{n}{k}$, we can precompute factorials and modular inverses for fast calculation.
 
-The time complexity is $O(n)$, where $n$ is the input integer $n$. The space complexity is $O(n)$ for storing factorials and modular inverses.
+The time complexity is $O(n)$, and the space complexity is $O(n)$, where $n$ is the input integer $n$.
 
 <!-- tabs:start -->
 
@@ -258,8 +258,6 @@ public:
 #### Go
 
 ```go
-package main
-
 const N = 100001
 const MOD = 1e9 + 7
 

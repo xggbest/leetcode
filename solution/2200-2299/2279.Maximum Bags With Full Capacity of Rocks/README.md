@@ -79,13 +79,13 @@ tags:
 >
 > 额外石头要尽量装满更多背包。每个背包的缺口独立， $n \le 5\times 10^4$，应优先填缺口小的。
 >
-> 把 $capacity[i]-rocks[i]$ 排序后从小到大扣除 $\textit{additionalRocks}$，一旦不够就返回已装满的个数。
+> 把 $\textit{capacity}[i]-\textit{rocks}[i]$ 排序后从小到大扣除 $\textit{additionalRocks}$，一旦不够就返回已装满的个数。
 
 <!-- thinking:end -->
 
 我们首先将每个背包的剩余容量计算出来，然后对剩余容量进行排序，接着我们从小到大遍历剩余容量，将额外的石头放入背包中，直到额外的石头用完或者背包的剩余容量用完为止，返回此时的背包数量即可。
 
-时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 为背包的数量。
+时间复杂度 $O(n \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 为背包的数量。
 
 <!-- tabs:start -->
 

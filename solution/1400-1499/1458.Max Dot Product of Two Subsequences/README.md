@@ -86,7 +86,7 @@ tags:
 >
 > 子序列须非空，元素可正可负， $m,n\le 500$。若按 LCS 只取正贡献会漏掉「只能选一对负数乘积」的情形。
 >
-> $f[i][j]$ 表示两数组前缀的最大点积：可丢掉 $nums1[i-1]$ 或 $nums2[j-1]$，也可强制配对，并允许丢弃此前的负前缀（ $\max(0,f[i-1][j-1])+x\cdot y$）。初值 $-\infty$ 保证至少选一对。
+> $f[i][j]$ 表示两数组前缀的最大点积：可丢掉 $\textit{nums1}[i-1]$ 或 $\textit{nums2}[j-1]$，也可强制配对，并允许丢弃此前的负前缀（ $\max(0,f[i-1][j-1])+x\cdot y$）。初值 $-\infty$ 保证至少选一对。
 
 <!-- thinking:end -->
 
@@ -99,7 +99,7 @@ tags:
 
 最终答案即为 $f[m][n]$。
 
-时间复杂度 $O(m \times n)$，空间复杂度 $O(m \times n)$。其中 $m$ 和 $n$ 分别是数组 $\textit{nums1}$ 和 $\textit{nums2}$ 的长度。
+时间复杂度 $O(mn)$，空间复杂度 $O(mn)$。其中 $m$ 和 $n$ 分别是数组 $\textit{nums1}$ 和 $\textit{nums2}$ 的长度。
 
 <!-- tabs:start -->
 

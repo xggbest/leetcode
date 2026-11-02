@@ -115,11 +115,11 @@ tags:
 
 > **思考**
 >
-> 只能删前缀/后缀或在两端添加，本质上是保留一段公共连续子串。枚举 $initial$ 每个子串在 $target$ 中查找，时间为 $O(m^2n)$。
+> 只能删前缀/后缀或在两端添加，本质上是保留一段公共连续子串。枚举 $\textit{initial}$ 每个子串在 $\textit{target}$ 中查找，时间为 $O(m^2n)$。
 >
-> 操作次数等于两端丢掉的字符数加上补齐 $target$ 其余部分，即 $m+n-2\cdot mx$，其中 $mx$ 为最长公共子串长度。
+> 操作次数等于两端丢掉的字符数加上补齐 $\textit{target}$ 其余部分，即 $m+n-2\cdot mx$，其中 $mx$ 为最长公共子串长度。
 >
-> 经典 DP： $f[i][j]$ 表示以 $initial[i-1]$ 与 $target[j-1]$ 结尾的公共子串长，相等则由 $f[i-1][j-1]+1$ 转移。取全局最大 $mx$ 即可。
+> 经典 DP： $f[i][j]$ 表示以 $\textit{initial}[i-1]$ 与 $\textit{target}[j-1]$ 结尾的公共子串长，相等则由 $f[i-1][j-1]+1$ 转移。取全局最大 $mx$ 即可。
 
 <!-- thinking:end -->
 
@@ -138,7 +138,7 @@ $$
 
 那么 $mx = \max f[i][j]$，最终答案为 $m + n - 2 \times mx$。
 
-时间复杂度 $O(m \times n)$，空间复杂度 $O(m \times n)$。其中 $m$ 和 $n$ 分别为字符串 `initial` 和 `target` 的长度。
+时间复杂度 $O(mn)$，空间复杂度 $O(mn)$。其中 $m$ 和 $n$ 分别为字符串 `initial` 和 `target` 的长度。
 
 <!-- tabs:start -->
 

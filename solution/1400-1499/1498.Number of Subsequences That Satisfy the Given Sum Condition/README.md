@@ -79,9 +79,9 @@ tags:
 
 > **思考**
 >
-> 子序列只关心最小与最大，排序不改变可组成的最值对。 $n\le 10^5$，枚举最小值 $nums[i]$，二分最大合法 $nums[j]$，中间元素可任意选，方案为 $2^{j-i}$。
+> 子序列只关心最小与最大，排序不改变可组成的最值对。 $n\le 10^5$，枚举最小值 $\textit{nums}[i]$，二分最大合法 $\textit{nums}[j]$，中间元素可任意选，方案为 $2^{j-i}$。
 >
-> 预处理二的幂以免重复计算。若 $2\cdot nums[i]>target$，更大的最小值已不可能。
+> 预处理二的幂以免重复计算。若 $2\cdot \textit{nums}[i]>\textit{target}$，更大的最小值已不可能。
 
 <!-- thinking:end -->
 
@@ -89,7 +89,7 @@ tags:
 
 然后我们枚举最小元素 $\textit{nums}[i]$，对于每个 $\textit{nums}[i]$，我们可以在 $\textit{nums}[i + 1]$ 到 $\textit{nums}[n - 1]$ 中找到最大元素 $\textit{nums}[j]$，使得 $\textit{nums}[i] + \textit{nums}[j] \leq \textit{target}$，此时满足条件的子序列数目为 $2^{j - i}$，其中 $2^{j - i}$ 表示从 $\textit{nums}[i + 1]$ 到 $\textit{nums}[j]$ 的所有子序列的数目。我们将所有的子序列数目累加即可。
 
-时间复杂度 $O(n \times \log n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 $\textit{nums}$ 的长度。
+时间复杂度 $O(n \log n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 $\textit{nums}$ 的长度。
 
 <!-- tabs:start -->
 

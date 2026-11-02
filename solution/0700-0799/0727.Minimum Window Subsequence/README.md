@@ -77,15 +77,15 @@ s1 = "abcdebdde", s2 = "bde"
 
 $$
 f[i][j] = \begin{cases}
-i, & j = 1 \textit{ and } s1[i-1] = s2[j] \\
-f[i - 1][j - 1], & j > 1 \textit{ and } s1[i-1] = s2[j-1] \\
-f[i - 1][j], & s1[i-1] \ne s2[j-1]
+i, & j = 1 \textit{ and } \textit{s1}[i-1] = \textit{s2}[j] \\
+f[i - 1][j - 1], & j > 1 \textit{ and } \textit{s1}[i-1] = \textit{s2}[j-1] \\
+f[i - 1][j], & \textit{s1}[i-1] \ne \textit{s2}[j-1]
 \end{cases}
 $$
 
 接下来我们只需要遍历 $\textit{s1}$，如果 $f[i][n] \gt 0$，则更新最短子串的起始位置和长度。最后返回最短子串即可。
 
-时间复杂度 $O(m \times n)$，空间复杂度 $O(m \times n)$。其中 $m$ 和 $n$ 分别为字符串 $\textit{s1}$ 和 $\textit{s2}$ 的长度。
+时间复杂度 $O(mn)$，空间复杂度 $O(mn)$。其中 $m$ 和 $n$ 分别为字符串 $\textit{s1}$ 和 $\textit{s2}$ 的长度。
 
 <!-- tabs:start -->
 

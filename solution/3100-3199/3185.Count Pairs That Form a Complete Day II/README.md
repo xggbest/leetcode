@@ -76,7 +76,7 @@ tags:
 >
 > 配对余数公式不变，哈希或长 $24$ 的数组均可。
 >
-> 从左扫描：答案加上 $cnt[(24-x\bmod 24)\bmod 24]$，再更新 $cnt[x\bmod 24]$。
+> 从左扫描：答案加上 $\textit{cnt}[(24-x\bmod 24)\bmod 24]$，再更新 $\textit{cnt}[x\bmod 24]$。
 
 <!-- thinking:end -->
 
@@ -86,7 +86,7 @@ tags:
 
 遍历完数组 $\textit{hours}$ 后，我们就可以得到满足题意的下标对数目。
 
-时间复杂度 $O(n)$，其中 $n$ 为数组 $\textit{hours}$ 的长度。空间复杂度 $O(C)$，其中 $C=24$。
+时间复杂度 $O(n)$，空间复杂度 $O(C)$。其中 $n$ 为数组 $\textit{hours}$ 的长度，而 $C=24$。
 
 <!-- tabs:start -->
 

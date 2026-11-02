@@ -79,7 +79,7 @@ tags:
 
 枚举完所有 `value` 后，即可得到最终答案 `ans`。
 
-时间复杂度 $O(n \times \log n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 `arr` 的长度。
+时间复杂度 $O(n \log n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 `arr` 的长度。
 
 <!-- tabs:start -->
 

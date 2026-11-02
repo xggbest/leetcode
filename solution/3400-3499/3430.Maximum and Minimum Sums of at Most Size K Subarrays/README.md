@@ -187,7 +187,7 @@ tags:
 我们定义：
 
 $$
-MaxSum_i = \sum_{j = \max(0, i - k + 1)}^i \max(nums[j:i + 1])
+\textit{MaxSum}_i = \sum_{j = \max(0, i - k + 1)}^i \max(\textit{nums}[j:i + 1])
 $$
 
 表示所有以索引 $i$ 结尾的合法子数组，它们各自最大值的总和。
@@ -195,7 +195,7 @@ $$
 同理：
 
 $$
-MinSum_i = \sum_{j = \max(0, i - k + 1)}^i \min(nums[j:i + 1])
+\textit{MinSum}_i = \sum_{j = \max(0, i - k + 1)}^i \min(\textit{nums}[j:i + 1])
 $$
 
 表示所有以索引 $i$ 结尾的合法子数组，它们各自最小值的总和。
@@ -276,7 +276,7 @@ subarrays_max_sum
 产生：
 
 $$
-(nums[i] - prev\_num) \times prev\_shares
+(\textit{nums}[i] - \textit{prev\_num}) \times \textit{prev\_shares}
 $$
 
 的净增量。
@@ -326,14 +326,7 @@ subarrays_max_min_sum
 
 ---
 
-时间复杂度为 $O(n)$，空间复杂度为 $O(n)$。
-
-这是因为：
-
-- 每个元素至多进入并离开 `max_stack` 各一次
-- 每个元素至多进入并离开 `min_stack` 各一次
-
-因此每个元素总操作次数不超过四次，整体时间复杂度为严格线性时间复杂度。
+时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 $\textit{nums}$ 的长度。每个元素至多进入并离开两个单调栈各一次。
 
 <!-- tabs:start -->
 

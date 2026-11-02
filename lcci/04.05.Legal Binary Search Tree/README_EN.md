@@ -69,7 +69,7 @@ difficulty: Medium
 >
 > BST inorder is strictly increasing, so each visit can be checked against the previous value.
 >
-> $prev$ starts at $-\infty$; after a valid left subtree, require $prev < root.val$, update $prev$, and go right. No explicit sequence is stored.
+> $\textit{prev}$ starts at $-\infty$; after a valid left subtree, require $\textit{prev} < \textit{root}.\textit{val}$, update $\textit{prev}$, and go right. No explicit sequence is stored.
 
 <!-- thinking:end -->
 
@@ -77,7 +77,7 @@ We can perform a recursive in-order traversal on the binary tree. If the result 
 
 Therefore, we use a variable `prev` to save the last node we traversed. Initially, `prev = -∞`. Then we recursively traverse the left subtree. If the left subtree is not a binary search tree, we directly return `False`. Otherwise, we check whether the value of the current node is greater than `prev`. If not, we return `False`. Otherwise, we update `prev` to the value of the current node, and then recursively traverse the right subtree.
 
-The time complexity is $O(n)$, and the space complexity is $O(n)$. Where $n$ is the number of nodes in the binary tree.
+The time complexity is $O(n)$, and the space complexity is $O(n)$, where $n$ is the number of nodes in the binary tree.
 
 <!-- tabs:start -->
 

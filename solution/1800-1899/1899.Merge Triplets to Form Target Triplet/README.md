@@ -97,7 +97,7 @@ tags:
 >
 > 合并把两个三元组各维取 $\max$。一旦某维已经超过目标，该三元组不能再参与，否则无法降下来。
 >
-> 只保留三维都不超过 $target$ 的三元组，对它们各维取 $\max$。若结果恰为 $target$，说明每一维都有来源，可以合并得到。
+> 只保留三维都不超过 $\textit{target}$ 的三元组，对它们各维取 $\max$。若结果恰为 $\textit{target}$，说明每一维都有来源，可以合并得到。
 
 <!-- thinking:end -->
 
@@ -114,7 +114,7 @@ tags:
 
 最后，我们只需要判断 $[d, e, f]$ 是否等于 $\textit{target}$ 即可。如果等于，返回 $\textit{true}$，否则返回 $\textit{false}$。
 
-时间复杂度 $O(n)$，其中 $n$ 为数组 $\textit{triplets}$ 的长度。空间复杂度 $O(1)$。
+时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为数组 $\textit{triplets}$ 的长度。
 
 <!-- tabs:start -->
 

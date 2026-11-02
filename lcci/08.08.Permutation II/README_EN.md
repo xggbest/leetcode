@@ -61,11 +61,11 @@ We can first sort the string by characters, so that duplicate characters are pla
 Then, we design a function $\textit{dfs}(i)$, which represents the character that needs to be filled at the $i$-th position. The specific implementation of the function is as follows:
 
 - If $i = n$, it means we have filled all positions, add the current permutation to the answer array, and then return.
-- Otherwise, we enumerate the character $\textit{s}[j]$ for the $i$-th position, where the range of $j$ is $[0, n - 1]$. We need to ensure that $\textit{s}[j]$ has not been used and is different from the previously enumerated character to ensure that the current permutation is not duplicated. If the conditions are met, we can fill $\textit{s}[j]$ and continue to recursively fill the next position by calling $\textit{dfs}(i + 1)$. After the recursive call ends, we need to mark $\textit{s}[j]$ as unused to facilitate subsequent enumeration.
+- Otherwise, we enumerate the character $s[j]$ for the $i$-th position, where the range of $j$ is $[0, n - 1]$. We need to ensure that $s[j]$ has not been used and is different from the previously enumerated character to ensure that the current permutation is not duplicated. If the conditions are met, we can fill $s[j]$ and continue to recursively fill the next position by calling $\textit{dfs}(i + 1)$. After the recursive call ends, we need to mark $s[j]$ as unused to facilitate subsequent enumeration.
 
 In the main function, we first sort the string, then call $\textit{dfs}(0)$ to start filling from the 0th position, and finally return the answer array.
 
-The time complexity is $O(n \times n!)$, and the space complexity is $O(n)$. Here, $n$ is the length of the string $s$. We need to perform $n!$ enumerations, and each enumeration requires $O(n)$ time to check for duplicates. Additionally, we need a marker array to mark whether each position has been used, so the space complexity is $O(n)$.
+The time complexity is $O(nn!)$, and the space complexity is $O(n)$, where $n$ is the length of the string $s$. We need to perform $n!$ enumerations, and each enumeration requires $O(n)$ time to check for duplicates. Additionally, we need a marker array to mark whether each position has been used, so the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 

@@ -95,7 +95,7 @@ For each $i$, enumerate $j \in [0, i)$. If $\textit{words}[j]$ is a predecessor 
 
 The answer is $\max(f)$.
 
-The time complexity is $O(n^2 \times L)$ and the space complexity is $O(n)$, where $n$ is the length of the array and $L$ is the maximum length of a string.
+The time complexity is $O(n^2L)$, and the space complexity is $O(n)$, where $n$ is the length of the array and $L$ is the maximum length of a string.
 
 <!-- tabs:start -->
 
@@ -308,7 +308,7 @@ impl Solution {
 >
 > Solution 1 scans every shorter word even when the length gap is not $1$. A predecessor is $w$ with one character deleted, so there are at most $L$ candidates and a hash map can store scores by word.
 >
-> Still sorting by length, we delete each index of $w$ and take $f[p]+1$. The time becomes $O(nL^2)$.
+> Still sorting by length, we delete each index of $w$ and take $f[p]+1$. The time becomes $O(n \times L^2)$.
 
 <!-- thinking:end -->
 
@@ -318,7 +318,7 @@ For the current word $w$, enumerate each predecessor $p$ obtained by deleting on
 
 The answer is the maximum value among all $f[w]$.
 
-The time complexity is $O(n \times L^2)$ and the space complexity is $O(n \times L)$.
+The time complexity is $O(n \times L^2)$, and the space complexity is $O(n \times L)$.
 
 <!-- tabs:start -->
 

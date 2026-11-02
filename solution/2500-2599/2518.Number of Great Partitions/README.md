@@ -90,14 +90,14 @@ $$
 f[i][j] = \left\{
 \begin{aligned}
 &f[i - 1][j] & \textit{如果不选第 } i \textit{ 个元素} \\
-&f[i - 1][j - nums[i - 1]] & \textit{如果选第 } i \textit{ 个元素}
+&f[i - 1][j - \textit{nums}[i - 1]] & \textit{如果选第 } i \textit{ 个元素}
 \end{aligned}
 \right.
 $$
 
 那么“坏分区”的个数就是 $\sum_{j=0}^{k-1} f[n][j] \times 2$，其中 $n$ 为数组 `nums` 的长度。最后，我们用 $2^n$ 减去“坏分区”的个数，即可得到“好分区”的个数。
 
-时间复杂度 $O(n \times k)$，空间复杂度 $O(n \times k)$。其中 $n$ 为数组 `nums` 的长度，而 $k$ 为整数 $k$。
+时间复杂度 $O(nk)$，空间复杂度 $O(nk)$。其中 $n$ 为数组 `nums` 的长度，而 $k$ 为整数 $k$。
 
 <!-- tabs:start -->
 

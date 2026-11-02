@@ -75,7 +75,7 @@ tags:
 >
 > 先吸收较小者只会让质量单调变大，不会阻碍之后对更大者的比较，因而按质量升序贪心是安全的。 $n\le 10^5$，排序后一次扫描即可。
 >
-> 将 $\textit{asteroids}$ 排序，若途中出现 $mass<x$ 则失败，否则把 $x$ 加入 $mass$。
+> 将 $\textit{asteroids}$ 排序，若途中出现 $\textit{mass}<x$ 则失败，否则把 $x$ 加入 $\textit{mass}$。
 
 <!-- thinking:end -->
 
@@ -83,7 +83,7 @@ tags:
 
 如果所有小行星都能被摧毁，返回 `true`。
 
-时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 是小行星的数量。
+时间复杂度 $O(n \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 是小行星的数量。
 
 <!-- tabs:start -->
 

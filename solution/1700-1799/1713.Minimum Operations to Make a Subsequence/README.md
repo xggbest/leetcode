@@ -68,7 +68,7 @@ tags:
 >
 > 最少插入次数等于 $|\textit{target}|$ 减去最长公共子序列长度。标准 LCS 为 $O(mn)$，两边长度均达 $10^5$，不可行。
 >
-> $\textit{target}$ 元素互异，因此 $arr$ 中出现在 $\textit{target}$ 里的值可映射为 $\textit{target}$ 下标。LCS 退化为该下标序列的最长递增子序列。
+> $\textit{target}$ 元素互异，因此 $\textit{arr}$ 中出现在 $\textit{target}$ 里的值可映射为 $\textit{target}$ 下标。LCS 退化为该下标序列的最长递增子序列。
 >
 > 用树状数组维护「小于当前下标的最大 LIS」，每次查询 $x-1$ 再更新 $x$。答案为 $m$ 减去 LIS 长度。
 
@@ -76,13 +76,13 @@ tags:
 
 根据题意，`target` 和 `arr` 这两个数组的公共子序列越长，需要添加的元素就越少。因此，最少添加的元素个数等于 `target` 的长度减去 `target` 和 `arr` 的最长公共子序列的长度。
 
-但是，[求最长公共子序列](https://github.com/doocs/leetcode/blob/main/solution/1100-1199/1143.Longest%20Common%20Subsequence/README.md)的时间复杂度为 $O(m \times n)$，无法通过本题，需要转变思路。
+但是，[求最长公共子序列](https://github.com/doocs/leetcode/blob/main/solution/1100-1199/1143.Longest%20Common%20Subsequence/README.md)的时间复杂度为 $O(mn)$，无法通过本题，需要转变思路。
 
 我们可以用一个哈希表记录 `target` 数组中每个元素的下标，然后遍历 `arr` 数组，对于 `arr` 数组中的每个元素，如果哈希表中存在该元素，则将该元素的下标加入到一个数组中，这样就得到了一个新的数组 `nums`，该数组是 `arr` 中的元素在 `target` 数组中的下标（去掉了不在 `target` 中的元素），该数组的最长递增子序列的长度就是 `target` 和 `arr` 的最长公共子序列的长度。
 
 因此，问题转化为求 `nums` 数组的最长递增子序列的长度。参考 [300. 最长递增子序列](https://github.com/doocs/leetcode/blob/main/solution/0300-0399/0300.Longest%20Increasing%20Subsequence/README.md)。
 
-时间复杂度 $O(n \times \log m)$，空间复杂度 $O(m)$。其中 $m$ 和 $n$ 分别为 `target` 和 `arr` 的长度。
+时间复杂度 $O(n \log m)$，空间复杂度 $O(m)$。其中 $m$ 和 $n$ 分别为 `target` 和 `arr` 的长度。
 
 <!-- tabs:start -->
 
