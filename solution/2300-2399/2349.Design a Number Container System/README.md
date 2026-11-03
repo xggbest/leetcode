@@ -87,9 +87,9 @@ nc.find(10); // 数字 10 所在下标为 2 ，3 和 5 。最小下标为 2 ，�
 
 我们用一个哈希表 $d$ 记录下标和数字的映射关系，用一个哈希表 $g$ 记录每个数字对应的下标集合，这里我们可以使用有序集合来存储下标，这样我们就可以方便地找到最小下标。
 
-调用 `change` 方法时，我们先判断下标是否已经存在，如果存在，我们就将原来的数字从对应的下标集合中删除，然后将新的数字添加到对应的下标集合中。时间复杂度 $O(\log n)$。
+调用 $\textit{change}$ 方法时，我们先判断下标是否已经存在，如果存在，我们就将原来的数字从对应的下标集合中删除，然后将新的数字添加到对应的下标集合中。时间复杂度 $O(\log n)$。
 
-调用 `find` 方法时，我们直接返回对应数字的下标集合的第一个元素即可。时间复杂度 $O(1)$。
+调用 $\textit{find}$ 方法时，我们直接返回对应数字的下标集合的第一个元素即可。时间复杂度 $O(1)$。
 
 空间复杂度 $O(n)$。其中 $n$ 为数字的个数。
 
@@ -99,7 +99,6 @@ nc.find(10); // 数字 10 所在下标为 2 ，3 和 5 。最小下标为 2 ，�
 
 ```python
 class NumberContainers:
-
     def __init__(self):
         self.d = {}
         self.g = defaultdict(SortedSet)
@@ -759,7 +758,7 @@ class TreeSet<T = number> {
 #### Rust
 
 ```rust
-use std::collections::{HashMap, BTreeSet};
+use std::collections::{BTreeSet, HashMap};
 
 struct NumberContainers {
     d: HashMap<i32, i32>,
@@ -785,7 +784,10 @@ impl NumberContainers {
             }
         }
         self.d.insert(index, number);
-        self.g.entry(number).or_insert_with(BTreeSet::new).insert(index);
+        self.g
+            .entry(number)
+            .or_insert_with(BTreeSet::new)
+            .insert(index);
     }
 
     fn find(&self, number: i32) -> i32 {

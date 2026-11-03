@@ -90,7 +90,7 @@ Purchases table:
 
 <!-- thinking:end -->
 
-我们可以使用递归生成一个包含 2023 年 11 月所有日期的表 `T`，然后使用左连接将 `T` 与 `Purchases` 表按照日期进行连接，最后按照题目要求进行分组求和即可。
+我们可以使用递归生成一个包含 2023 年 11 月所有日期的表 `T`，然后使用左连接将 `T` 与 $\textit{Purchases}$ 表按照日期进行连接，最后按照题目要求进行分组求和即可。
 
 <!-- tabs:start -->
 
@@ -109,9 +109,8 @@ SELECT
     CEIL(DAYOFMONTH(purchase_date) / 7) AS week_of_month,
     purchase_date,
     IFNULL(SUM(amount_spend), 0) AS total_amount
-FROM
-    T
-    LEFT JOIN Purchases USING (purchase_date)
+FROM T
+LEFT JOIN Purchases USING (purchase_date)
 WHERE DAYOFWEEK(purchase_date) = 6
 GROUP BY 2
 ORDER BY 1;

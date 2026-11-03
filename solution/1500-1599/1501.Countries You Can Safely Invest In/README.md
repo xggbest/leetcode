@@ -145,7 +145,7 @@ Calls 表:
 
 <!-- thinking:end -->
 
-我们可以使用等值连接，将 `Person` 表和 `Calls` 表连接起来，连接的条件是 `Person.id = Calls.caller_id` 或者 `Person.id = Calls.callee_id`，然后再将连接后的表和 `Country` 表连接起来，连接的条件是 `left(phone_number, 3) = country_code`，最后按照国家分组，计算每个国家的平均通话时长，然后再使用子查询，找出平均通话时长大于全球平均通话时长的国家。
+我们可以使用等值连接，将 $\textit{Person}$ 表和 $\textit{Calls}$ 表连接起来，连接的条件是 `Person.id = Calls.caller_id` 或者 `Person.id = Calls.callee_id`，然后再将连接后的表和 $\textit{Country}$ 表连接起来，连接的条件是 `left(phone_number, 3) = country_code`，最后按照国家分组，计算每个国家的平均通话时长，然后再使用子查询，找出平均通话时长大于全球平均通话时长的国家。
 
 <!-- tabs:start -->
 
@@ -154,15 +154,13 @@ Calls 表:
 ```sql
 # Write your MySQL query statement below
 SELECT country
-FROM
-    (
-        SELECT c.name AS country, AVG(duration) AS duration
-        FROM
-            Person
-            JOIN Calls ON id IN(caller_id, callee_id)
-            JOIN Country AS c ON LEFT(phone_number, 3) = country_code
-        GROUP BY 1
-    ) AS t
+FROM (
+    SELECT c.name AS country, AVG(duration) AS duration
+    FROM Person
+    JOIN Calls ON id IN (caller_id, callee_id)
+    JOIN Country AS c ON LEFT(phone_number, 3) = country_code
+    GROUP BY 1
+) AS t
 WHERE duration > (SELECT AVG(duration) FROM Calls);
 ```
 

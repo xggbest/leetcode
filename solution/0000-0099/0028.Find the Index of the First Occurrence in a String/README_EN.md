@@ -70,9 +70,9 @@ The first occurrence is at index 0, so we return 0.
 
 <!-- thinking:end -->
 
-We compare the string `needle` with each character of the string `haystack` as the starting point. If we find a matching index, we return it directly.
+We compare the string $\textit{needle}$ with each character of the string $\textit{haystack}$ as the starting point. If we find a matching index, we return it directly.
 
-Assuming the length of the string `haystack` is $n$ and the length of the string `needle` is $m$, the time complexity is $O((n-m)m)$, and the space complexity is $O(1)$.
+Assuming the length of the string $\textit{haystack}$ is $n$ and the length of the string $\textit{needle}$ is $m$, the time complexity is $O((n-m)m)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
@@ -265,7 +265,7 @@ class Solution {
 
 The [Rabin-Karp algorithm](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm) essentially uses a sliding window combined with a hash function to compare the hashes of fixed-length strings, which can reduce the time complexity of comparing whether two strings are the same to $O(1)$.
 
-Assuming the length of the string `haystack` is $n$ and the length of the string `needle` is $m$, the time complexity is $O(n+m)$, and the space complexity is $O(1)$.
+Assuming the length of the string $\textit{haystack}$ is $n$ and the length of the string $\textit{needle}$ is $m$, the time complexity is $O(n+m)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
@@ -376,12 +376,9 @@ func strStr(haystack string, needle string) int {
 		if right-left+1 < m {
 			continue
 		}
-		// 此时 left~right 的长度已经为 needle 的长度 m 了，只需要比对 sha 值与 target 是否一致即可
-		// 为避免 hash 冲突，还需要确保 haystack[left:right+1] 与 needle 相同
 		if sha == target && haystack[left:right+1] == needle {
 			return left
 		}
-		// 未匹配成功，left 右移一位
 		sha = (sha - (int(haystack[left])*multi)%mod + mod) % mod
 		left++
 	}

@@ -83,13 +83,13 @@ auctionSystem.getHighestBidder(3); // return -1 as no bids exist for item 3</div
 
 <!-- thinking:end -->
 
-We define two hash tables. `items` is used to store all bid information for each item, where `items[itemId]` stores an ordered set. Each element in the set is a tuple `(bidAmount, userId)`, representing a user's bid amount for that item. Since we need to quickly retrieve the user with the highest bid, this ordered set needs to be sorted by bid amount in ascending order. If bid amounts are identical, they are sorted by user ID in ascending order. The other hash table `users` is used to store the bid information of each user for each item, where `users[userId][itemId]` stores the user's bid amount for that item.
+We define two hash tables. `items` is used to store all bid information for each item, where `items[itemId]` stores an ordered set. Each element in the set is a tuple `(bidAmount, userId)`, representing a user's bid amount for that item. Since we need to quickly retrieve the user with the highest bid, this ordered set needs to be sorted by bid amount in ascending order. If bid amounts are identical, they are sorted by user ID in ascending order. The other hash table $\textit{users}$ is used to store the bid information of each user for each item, where `users[userId][itemId]` stores the user's bid amount for that item.
 
-For the `addBid(userId, itemId, bidAmount)` operation, we first check if the user has already placed a bid on the item. If they have, we call the `removeBid(userId, itemId)` method to remove the original bid; then we add the new bid information to `users` and `items`.
+For the `addBid(userId, itemId, bidAmount)` operation, we first check if the user has already placed a bid on the item. If they have, we call the `removeBid(userId, itemId)` method to remove the original bid; then we add the new bid information to $\textit{users}$ and `items`.
 
-For the `updateBid(userId, itemId, newAmount)` operation, we first retrieve the user's original bid amount for the item from `users`, then remove the corresponding tuple `(oldAmount, userId)` from `items`, add the new bid information to `items`, and update the bid amount in `users`.
+For the `updateBid(userId, itemId, newAmount)` operation, we first retrieve the user's original bid amount for the item from $\textit{users}$, then remove the corresponding tuple `(oldAmount, userId)` from `items`, add the new bid information to `items`, and update the bid amount in $\textit{users}$.
 
-For the `removeBid(userId, itemId)` operation, we first retrieve the user's original bid amount for the item from `users`, then remove the corresponding tuple `(oldAmount, userId)` from `items`, and finally delete the user's bid information for that item from `users`.
+For the `removeBid(userId, itemId)` operation, we first retrieve the user's original bid amount for the item from $\textit{users}$, then remove the corresponding tuple `(oldAmount, userId)` from `items`, and finally delete the user's bid information for that item from $\textit{users}$.
 
 For the `getHighestBidder(itemId)` operation, we first check if `items[itemId]` is empty. If it is, we return -1; otherwise, we return the user ID of the last element in the ordered set, which corresponds to the highest bidder.
 
@@ -157,19 +157,21 @@ class AuctionSystem {
 
         users.get(userId).put(itemId, bidAmount);
 
-        items.computeIfAbsent(itemId, k -> new TreeSet<>(
-            (a, b) -> a[0] != b[0] ? Integer.compare(a[0], b[0]) : Integer.compare(a[1], b[1])
-        ));
+        items.computeIfAbsent(itemId,
+            k
+            -> new TreeSet<>(
+                (a, b)
+                    -> a[0] != b[0] ? Integer.compare(a[0], b[0]) : Integer.compare(a[1], b[1])));
 
-        items.get(itemId).add(new int[]{bidAmount, userId});
+        items.get(itemId).add(new int[] {bidAmount, userId});
     }
 
     public void updateBid(int userId, int itemId, int newAmount) {
         int oldAmount = users.get(userId).get(itemId);
         TreeSet<int[]> set = items.get(itemId);
 
-        set.remove(new int[]{oldAmount, userId});
-        set.add(new int[]{newAmount, userId});
+        set.remove(new int[] {oldAmount, userId});
+        set.add(new int[] {newAmount, userId});
 
         users.get(userId).put(itemId, newAmount);
     }
@@ -178,7 +180,7 @@ class AuctionSystem {
         int oldAmount = users.get(userId).get(itemId);
         TreeSet<int[]> set = items.get(itemId);
 
-        set.remove(new int[]{oldAmount, userId});
+        set.remove(new int[] {oldAmount, userId});
         users.get(userId).remove(itemId);
     }
 

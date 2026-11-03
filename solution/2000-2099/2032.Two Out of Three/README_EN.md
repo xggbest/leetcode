@@ -78,7 +78,7 @@ Given three integer arrays <code>nums1</code>, <code>nums2</code>, and <code>num
 
 We can first put each element of the arrays into an array, then enumerate each number $i$ from $1$ to $100$, and check whether $i$ appears in at least two arrays. If so, add $i$ to the answer array.
 
-The time complexity is $O(n_1 + n_2 + n_3)$, and the space complexity is $O(n_1 + n_2 + n_3)$, where $n_1, n_2, n_3$ are the lengths of the arrays `nums1`, `nums2`, and `nums3`, respectively.
+The time complexity is $O(n_1 + n_2 + n_3)$, and the space complexity is $O(n_1 + n_2 + n_3)$, where $n_1, n_2, n_3$ are the lengths of the arrays $\textit{nums1}$, $\textit{nums2}$, and $\textit{nums3}$, respectively.
 
 <!-- tabs:start -->
 
@@ -165,16 +165,24 @@ func twoOutOfThree(nums1 []int, nums2 []int, nums3 []int) (ans []int) {
 
 ```ts
 function twoOutOfThree(nums1: number[], nums2: number[], nums3: number[]): number[] {
-    const count = new Array(101).fill(0);
-    new Set(nums1).forEach(v => count[v]++);
-    new Set(nums2).forEach(v => count[v]++);
-    new Set(nums3).forEach(v => count[v]++);
-    const ans = [];
-    count.forEach((v, i) => {
-        if (v >= 2) {
+    const get = (nums: number[]): number[] => {
+        const s = new Array(101).fill(0);
+        for (const v of nums) {
+            s[v] = 1;
+        }
+        return s;
+    };
+
+    const s1 = get(nums1),
+        s2 = get(nums2),
+        s3 = get(nums3);
+    const ans: number[] = [];
+
+    for (let i = 1; i <= 100; i++) {
+        if (s1[i] + s2[i] + s3[i] > 1) {
             ans.push(i);
         }
-    });
+    }
     return ans;
 }
 ```
@@ -229,7 +237,7 @@ We can use a hash table `mask` to record which arrays each number appears in. Fo
 
 Finally, we iterate through each number in the hash table and check if its corresponding value has at least two bits set to `1` in binary. If so, add that number to the answer array.
 
-The time complexity is $O(n_1 + n_2 + n_3)$, and the space complexity is $O(n_1 + n_2 + n_3)$, where $n_1, n_2, n_3$ are the lengths of the arrays `nums1`, `nums2`, and `nums3`, respectively.
+The time complexity is $O(n_1 + n_2 + n_3)$, and the space complexity is $O(n_1 + n_2 + n_3)$, where $n_1, n_2, n_3$ are the lengths of the arrays $\textit{nums1}$, $\textit{nums2}$, and $\textit{nums3}$, respectively.
 
 <!-- tabs:start -->
 

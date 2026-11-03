@@ -94,7 +94,7 @@ spreadsheet.getValue("=A1+B2"); // 返回 15 (0+15)</div>
 
 调用 `resetCell` 方法时，我们将单元格引用从哈希表中删除。
 
-调用 `getValue` 方法时，我们将公式分割成两个单元格引用，然后计算它们的值，最后返回它们的和。
+调用 $\textit{getValue}$ 方法时，我们将公式分割成两个单元格引用，然后计算它们的值，最后返回它们的和。
 
 时间复杂度 $O(L)$，空间复杂度 $O(L)$。其中 $L$ 为公式的长度。
 
@@ -104,7 +104,6 @@ spreadsheet.getValue("=A1+B2"); // 返回 15 (0+15)</div>
 
 ```python
 class Spreadsheet:
-
     def __init__(self, rows: int):
         self.d = {}
 
@@ -296,9 +295,7 @@ struct Spreadsheet {
 
 impl Spreadsheet {
     fn new(_rows: i32) -> Self {
-        Spreadsheet {
-            d: HashMap::new(),
-        }
+        Spreadsheet { d: HashMap::new() }
     }
 
     fn set_cell(&mut self, cell: String, value: i32) {

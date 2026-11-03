@@ -80,9 +80,9 @@ The total number of units will be = (1 * 3) + (2 * 2) + (1 * 1) = 8.
 
 According to the problem, we should choose as many units as possible. Therefore, we first sort `boxTypes` in descending order of the number of units.
 
-Then we traverse `boxTypes` from front to back, choose up to `truckSize` boxes, and accumulate the number of units.
+Then we traverse `boxTypes` from front to back, choose up to $\textit{truckSize}$ boxes, and accumulate the number of units.
 
-The time complexity is $O(n \log n)$, where $n$ is the length of the two-dimensional array `boxTypes`.
+The time complexity is $O(n \log n)$, where $n$ is the length of the two-dimensional array $\textit{boxTypes}$.
 
 <!-- tabs:start -->
 
@@ -159,13 +159,15 @@ func maximumUnits(boxTypes [][]int, truckSize int) (ans int) {
 #### TypeScript
 
 ```ts
-export function maximumUnits(boxTypes: number[][], truckSize: number): number {
+function maximumUnits(boxTypes: number[][], truckSize: number): number {
     boxTypes.sort(([_, a], [__, b]) => b - a);
     let ans = 0;
     for (const [count, size] of boxTypes) {
         ans += Math.min(truckSize, count) * size;
         truckSize -= count;
-        if (truckSize < 0) break;
+        if (truckSize < 0) {
+            break;
+        }
     }
     return ans;
 }

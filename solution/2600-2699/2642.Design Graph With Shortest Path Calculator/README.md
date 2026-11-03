@@ -89,7 +89,7 @@ g.shortestPath(0, 3); // 返回 6 。从 0 到 3 的最短路径为 0 -&gt; 1 -&
 
 在 `shortestPath` 函数中，我们使用 Dijsktra 算法求从节点 $\textit{node1}$ 到节点 $\textit{node2}$ 的最短路径，其中 $\textit{dist}[i]$ 表示从节点 $\textit{node1}$ 到节点 $i$ 的最短路径， $\textit{vis}[i]$ 表示节点 $i$ 是否已经被访问过。我们初始化 $\textit{dist}[\textit{node1}]$ 为 $0$，其余的 $\textit{dist}[i]$ 均为 $\infty$。然后我们遍历 $n$ 次，每次找到当前未被访问过的节点 $t$，使得 $\textit{dist}[t]$ 最小。然后我们将节点 $t$ 标记为已访问，然后更新 $\textit{dist}[i]$ 的值为 $\min(\textit{dist}[i], \textit{dist}[t] + g_{ti})$。最后我们返回 $\textit{dist}[\textit{node2}]$，如果 $\textit{dist}[\textit{node2}]$ 为 $\infty$，则说明从节点 $\textit{node1}$ 到节点 $\textit{node2}$ 不存在路径，返回 $-1$。
 
-时间复杂度 $O(n^2q)$，空间复杂度 $O(n^2)$。其中 $n$ 为节点数，而 $q$ 为 `shortestPath` 函数的调用次数。
+时间复杂度 $O(n^2q)$，空间复杂度 $O(n^2)$。其中 $n$ 为节点数，而 $q$ 为 $\textit{shortestPath}$ 函数的调用次数。
 
 <!-- tabs:start -->
 
@@ -302,10 +302,9 @@ func (this *Graph) ShortestPath(node1 int, node2 int) int {
 ```ts
 class Graph {
     private g: number[][] = [];
-    private inf: number = 1 << 29;
 
     constructor(n: number, edges: number[][]) {
-        this.g = Array.from({ length: n }, () => Array(n).fill(this.inf));
+        this.g = Array.from({ length: n }, () => Array(n).fill(Infinity));
         for (const [f, t, c] of edges) {
             this.g[f][t] = c;
         }
@@ -318,9 +317,9 @@ class Graph {
 
     shortestPath(node1: number, node2: number): number {
         const n = this.g.length;
-        const dist: number[] = new Array(n).fill(this.inf);
+        const dist: number[] = Array(n).fill(Infinity);
         dist[node1] = 0;
-        const vis: boolean[] = new Array(n).fill(false);
+        const vis: boolean[] = Array(n).fill(false);
         for (let i = 0; i < n; ++i) {
             let t = -1;
             for (let j = 0; j < n; ++j) {
@@ -333,7 +332,7 @@ class Graph {
                 dist[j] = Math.min(dist[j], dist[t] + this.g[t][j]);
             }
         }
-        return dist[node2] >= this.inf ? -1 : dist[node2];
+        return dist[node2] >= Infinity ? -1 : dist[node2];
     }
 }
 

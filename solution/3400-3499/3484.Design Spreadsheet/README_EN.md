@@ -92,7 +92,7 @@ When calling the `setCell` method, we store the cell reference and value in the 
 
 When calling the `resetCell` method, we remove the cell reference from the hash table.
 
-When calling the `getValue` method, we split the formula into two cell references, calculate their values, and then return their sum.
+When calling the $\textit{getValue}$ method, we split the formula into two cell references, calculate their values, and then return their sum.
 
 The time complexity is $O(L)$, and the space complexity is $O(L)$, where $L$ is the length of the formula.
 
@@ -102,7 +102,6 @@ The time complexity is $O(L)$, and the space complexity is $O(L)$, where $L$ is 
 
 ```python
 class Spreadsheet:
-
     def __init__(self, rows: int):
         self.d = {}
 
@@ -294,9 +293,7 @@ struct Spreadsheet {
 
 impl Spreadsheet {
     fn new(_rows: i32) -> Self {
-        Spreadsheet {
-            d: HashMap::new(),
-        }
+        Spreadsheet { d: HashMap::new() }
     }
 
     fn set_cell(&mut self, cell: String, value: i32) {

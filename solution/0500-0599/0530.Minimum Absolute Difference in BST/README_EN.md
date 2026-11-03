@@ -61,7 +61,7 @@ tags:
 >
 > The minimum pairwise difference on a general tree needs all pairs. In a BST, inorder is sorted, so the minimum lies between adjacent values.
 >
-> Walk inorder, keep the predecessor, and update with `val - pre`. Seed `pre` at $-\infty$ so the first node is skipped. One inorder pass suffices.
+> Walk inorder, keep the predecessor, and update with `val - pre`. Seed $\textit{pre}$ at $-\infty$ so the first node is skipped. One inorder pass suffices.
 
 <!-- thinking:end -->
 
@@ -256,8 +256,8 @@ function getMinimumDifference(root: TreeNode | null): number {
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     pub fn get_minimum_difference(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         const inf: i32 = 1 << 30;

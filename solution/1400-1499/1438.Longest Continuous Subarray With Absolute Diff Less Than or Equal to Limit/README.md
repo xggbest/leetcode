@@ -109,7 +109,7 @@ tags:
 
 我们可以枚举每个位置作为子数组的右端点，找到其对应的最靠左的左端点，满足区间内中最大值与最小值的差值不超过 $\textit{limit}$。过程中，我们用有序集合维护窗口内的最大值和最小值。
 
-时间复杂度 $O(n \log n)$，空间复杂度 $O(n)$。其中 $n$ 是数组 `nums` 的长度。
+时间复杂度 $O(n \log n)$，空间复杂度 $O(n)$。其中 $n$ 是数组 $\textit{nums}$ 的长度。
 
 <!-- tabs:start -->
 
@@ -431,7 +431,6 @@ class TreapMultiSet<T = number> implements ITreapMultiSet<T> {
                 } else if (node.left == null && node.right == null) {
                     parent[direction] = null;
                 } else {
-                    // 旋到根节点
                     if (
                         node.right == null ||
                         TreapNode.getFac(node.left) > TreapNode.getFac(node.right)

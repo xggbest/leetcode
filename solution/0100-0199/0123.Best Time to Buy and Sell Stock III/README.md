@@ -92,7 +92,7 @@ tags:
 
 最后返回 `f4` 即可。
 
-时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为数组 `prices` 的长度。
+时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为数组 $\textit{prices}$ 的长度。
 
 <!-- tabs:start -->
 
@@ -101,7 +101,6 @@ tags:
 ```python
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # 第一次买入，第一次卖出，第二次买入，第二次卖出
         f1, f2, f3, f4 = -prices[0], 0, -prices[0], 0
         for price in prices[1:]:
             f1 = max(f1, -price)
@@ -116,7 +115,6 @@ class Solution:
 ```java
 class Solution {
     public int maxProfit(int[] prices) {
-        // 第一次买入，第一次卖出，第二次买入，第二次卖出
         int f1 = -prices[0], f2 = 0, f3 = -prices[0], f4 = 0;
         for (int i = 1; i < prices.length; ++i) {
             f1 = Math.max(f1, -prices[i]);

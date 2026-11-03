@@ -68,9 +68,9 @@ tags:
 
 <!-- thinking:end -->
 
-以字符串 `haystack` 的每一个字符为起点与字符串 `needle` 进行比较，若发现能够匹配的索引，直接返回即可。
+以字符串 $\textit{haystack}$ 的每一个字符为起点与字符串 $\textit{needle}$ 进行比较，若发现能够匹配的索引，直接返回即可。
 
-假设字符串 `haystack` 长度为 $n$，字符串 `needle` 长度为 $m$，则时间复杂度为 $O((n-m)m)$，空间复杂度 $O(1)$。
+假设字符串 $\textit{haystack}$ 长度为 $n$，字符串 $\textit{needle}$ 长度为 $m$，则时间复杂度为 $O((n-m)m)$，空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
@@ -263,7 +263,7 @@ class Solution {
 
 [Rabin-Karp 算法](https://zh.wikipedia.org/zh-hans/%E6%8B%89%E5%AE%BE-%E5%8D%A1%E6%99%AE%E7%AE%97%E6%B3%95)本质上是利用滑动窗口配合哈希函数对固定长度的字符串哈希之后进行比较，可以将比较两个字符串是否相同的时间复杂度降为 $O(1)$。
 
-假设字符串 `haystack` 长度为 $n$，字符串 `needle` 长度为 $m$，则时间复杂度为 $O(n+m)$，空间复杂度 $O(1)$。
+假设字符串 $\textit{haystack}$ 长度为 $n$，字符串 $\textit{needle}$ 长度为 $m$，则时间复杂度为 $O(n+m)$，空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
@@ -374,12 +374,9 @@ func strStr(haystack string, needle string) int {
 		if right-left+1 < m {
 			continue
 		}
-		// 此时 left~right 的长度已经为 needle 的长度 m 了，只需要比对 sha 值与 target 是否一致即可
-		// 为避免 hash 冲突，还需要确保 haystack[left:right+1] 与 needle 相同
 		if sha == target && haystack[left:right+1] == needle {
 			return left
 		}
-		// 未匹配成功，left 右移一位
 		sha = (sha - (int(haystack[left])*multi)%mod + mod) % mod
 		left++
 	}

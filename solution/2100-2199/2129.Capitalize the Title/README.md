@@ -86,7 +86,7 @@ tags:
 
 直接模拟，按空格切分字符串，得到每个单词，再按题目转大小写。最后用空格连接每个单词。
 
-时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是字符串 `title` 的长度。
+时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是字符串 $\textit{title}$ 的长度。
 
 <!-- tabs:start -->
 
@@ -161,9 +161,7 @@ function capitalizeTitle(title: string): string {
     return title
         .split(' ')
         .map(s =>
-            s.length < 3
-                ? s.toLowerCase()
-                : s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase(),
+            s.length < 3 ? s.toLowerCase() : s.slice(0, 1).toUpperCase() + s.slice(1).toLowerCase(),
         )
         .join(' ');
 }

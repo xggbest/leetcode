@@ -86,7 +86,7 @@ In the `addEdge` function, we update the value of $g_{ij}$ to $\textit{edge}[2]$
 
 In the `shortestPath` function, we use Dijsktra's algorithm to find the shortest path from node $\textit{node1}$ to node $\textit{node2}$. Here, $\textit{dist}[i]$ represents the shortest path from node $\textit{node1}$ to node $i$, and $\textit{vis}[i]$ indicates whether node $i$ has been visited. We initialize $\textit{dist}[\textit{node1}]$ to $0$, and the rest of $\textit{dist}[i]$ are all $\infty$. Then we iterate $n$ times, each time finding the current unvisited node $t$ such that $\textit{dist}[t]$ is the smallest. Then we mark node $t$ as visited, and then update the value of $\textit{dist}[i]$ to $\min(\textit{dist}[i], \textit{dist}[t] + g_{ti})$. Finally, we return $\textit{dist}[\textit{node2}]$. If $\textit{dist}[\textit{node2}]$ is $\infty$, it means that there is no path from node $\textit{node1}$ to node $\textit{node2}$, so we return $-1$.
 
-The time complexity is $O(n^2q)$, and the space complexity is $O(n^2)$, where $n$ is the number of nodes, and $q$ is the number of calls to the `shortestPath` function.
+The time complexity is $O(n^2q)$, and the space complexity is $O(n^2)$, where $n$ is the number of nodes, and $q$ is the number of calls to the $\textit{shortestPath}$ function.
 
 <!-- tabs:start -->
 
@@ -299,10 +299,9 @@ func (this *Graph) ShortestPath(node1 int, node2 int) int {
 ```ts
 class Graph {
     private g: number[][] = [];
-    private inf: number = 1 << 29;
 
     constructor(n: number, edges: number[][]) {
-        this.g = Array.from({ length: n }, () => Array(n).fill(this.inf));
+        this.g = Array.from({ length: n }, () => Array(n).fill(Infinity));
         for (const [f, t, c] of edges) {
             this.g[f][t] = c;
         }
@@ -315,9 +314,9 @@ class Graph {
 
     shortestPath(node1: number, node2: number): number {
         const n = this.g.length;
-        const dist: number[] = new Array(n).fill(this.inf);
+        const dist: number[] = Array(n).fill(Infinity);
         dist[node1] = 0;
-        const vis: boolean[] = new Array(n).fill(false);
+        const vis: boolean[] = Array(n).fill(false);
         for (let i = 0; i < n; ++i) {
             let t = -1;
             for (let j = 0; j < n; ++j) {
@@ -330,7 +329,7 @@ class Graph {
                 dist[j] = Math.min(dist[j], dist[t] + this.g[t][j]);
             }
         }
-        return dist[node2] >= this.inf ? -1 : dist[node2];
+        return dist[node2] >= Infinity ? -1 : dist[node2];
     }
 }
 
