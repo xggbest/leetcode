@@ -276,6 +276,85 @@ func (h *hp) Push(v any)        { *h = append(*h, v.(pair)) }
 func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
 ```
 
+#### TypeScript
+
+```ts
+function busiestServers(k: number, arrival: number[], load: number[]): number[] {
+    const free = new PriorityQueue<number>((a, b) => a - b);
+    for (let i = 0; i < k; ++i) {
+        free.enqueue(i);
+    }
+    const busy = new PriorityQueue<[number, number]>((a, b) => a[0] - b[0]);
+    const cnt: number[] = Array(k).fill(0);
+    for (let i = 0; i < arrival.length; ++i) {
+        const start = arrival[i];
+        const end = start + load[i];
+        while (!busy.isEmpty() && busy.front()![0] <= start) {
+            const server = busy.dequeue()![1];
+            free.enqueue(i + ((server - (i % k) + k) % k));
+        }
+        if (free.isEmpty()) {
+            continue;
+        }
+        const server = free.dequeue()! % k;
+        ++cnt[server];
+        busy.enqueue([end, server]);
+    }
+    let mx = 0;
+    for (const v of cnt) {
+        mx = Math.max(mx, v);
+    }
+    const ans: number[] = [];
+    for (let i = 0; i < k; ++i) {
+        if (cnt[i] === mx) {
+            ans.push(i);
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
+
+```rust
+use std::cmp::Reverse;
+use std::collections::{BTreeSet, BinaryHeap};
+
+impl Solution {
+    pub fn busiest_servers(k: i32, arrival: Vec<i32>, load: Vec<i32>) -> Vec<i32> {
+        let mut free: BTreeSet<i32> = (0..k).collect();
+        let mut busy = BinaryHeap::new();
+        let mut cnt = vec![0; k as usize];
+        for i in 0..arrival.len() {
+            let start = arrival[i];
+            let end = start + load[i];
+            loop {
+                match busy.peek() {
+                    Some(&Reverse((t, server))) if t <= start => {
+                        busy.pop();
+                        free.insert(server);
+                    }
+                    _ => break,
+                }
+            }
+            if free.is_empty() {
+                continue;
+            }
+            let j = i as i32 % k;
+            let server = match free.range(j..).next() {
+                Some(&server) => server,
+                None => *free.iter().next().unwrap(),
+            };
+            cnt[server as usize] += 1;
+            busy.push(Reverse((end, server)));
+            free.remove(&server);
+        }
+        let mx = *cnt.iter().max().unwrap();
+        (0..k).filter(|&i| cnt[i as usize] == mx).collect()
+    }
+}
+```
+
 <!-- tabs:end -->
 
 <!-- solution:end -->
